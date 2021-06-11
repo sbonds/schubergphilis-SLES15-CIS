@@ -1,4 +1,4 @@
-# Makefile for SLES12-CIS
+# Makefile for SLES15-CIS
 .PHONY: help
 help:
 	@echo

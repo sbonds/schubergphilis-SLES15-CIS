@@ -23,29 +23,29 @@
 
 - include: section1.yml
   become: yes
-  when: sles12cis_section1
+  when: sles15cis_section1
   tags:
-      - sles12cis_section1
+      - sles15cis_section1
 
 - include: section2.yml
   become: yes
-  when: sles12cis_section2
+  when: sles15cis_section2
 
 - include: section3.yml
   become: yes
-  when: sles12cis_section3
+  when: sles15cis_section3
 
 - include: section4.yml
   become: yes
-  when: sles12cis_section4
+  when: sles15cis_section4
 
 - include: section5.yml
   become: yes
-  when: sles12cis_section5
+  when: sles15cis_section5
 
 - include: section6.yml
   become: yes
-  when: sles12cis_section6
+  when: sles15cis_section6
 
 - include: post.yml
   become: yes

@@ -5,7 +5,7 @@
       line: "install cramfs /bin/true"
       create: yes
   when:
-      - sles12cis_rule_1_1_1_1
+      - sles15cis_rule_1_1_1_1
   tags:
       - level1
       - scored
@@ -18,7 +18,7 @@
       name: cramfs
       state: absent
   when:
-      - sles12cis_rule_1_1_1_1
+      - sles15cis_rule_1_1_1_1
   tags:
       - level1
       - scored
@@ -33,7 +33,7 @@
       line: "install freevxfs /bin/true"
       create: yes
   when:
-      - sles12cis_rule_1_1_1_2
+      - sles15cis_rule_1_1_1_2
   tags:
       - level1
       - scored
@@ -46,7 +46,7 @@
       name: freevxfs
       state: absent
   when:
-      - sles12cis_rule_1_1_1_2
+      - sles15cis_rule_1_1_1_2
   tags:
       - level1
       - scored
@@ -61,7 +61,7 @@
       line: "install jffs2 /bin/true"
       create: yes
   when:
-      - sles12cis_rule_1_1_1_3
+      - sles15cis_rule_1_1_1_3
   tags:
       - level1
       - scored
@@ -74,7 +74,7 @@
       name: jffs2
       state: absent
   when:
-      - sles12cis_rule_1_1_1_3
+      - sles15cis_rule_1_1_1_3
   tags:
       - level1
       - scored
@@ -89,7 +89,7 @@
       line: "install hfs /bin/true"
       create: yes
   when:
-      - sles12cis_rule_1_1_1_4
+      - sles15cis_rule_1_1_1_4
   tags:
       - level1
       - scored
@@ -102,7 +102,7 @@
       name: hfs
       state: absent
   when:
-      - sles12cis_rule_1_1_1_4
+      - sles15cis_rule_1_1_1_4
   tags:
       - level1
       - scored
@@ -117,7 +117,7 @@
       line: "install hfsplus /bin/true"
       create: yes
   when:
-      - sles12cis_rule_1_1_1_5
+      - sles15cis_rule_1_1_1_5
   tags:
       - level1
       - scored
@@ -130,7 +130,7 @@
       name: hfsplus
       state: absent
   when:
-      - sles12cis_rule_1_1_1_5
+      - sles15cis_rule_1_1_1_5
   tags:
       - level1
       - scored
@@ -145,7 +145,7 @@
       line: "install squashfs /bin/true"
       create: yes
   when:
-      - sles12cis_rule_1_1_1_6
+      - sles15cis_rule_1_1_1_6
   tags:
       - level1
       - scored
@@ -158,7 +158,7 @@
       name: squashfs
       state: absent
   when:
-      - sles12cis_rule_1_1_1_6
+      - sles15cis_rule_1_1_1_6
   tags:
       - level1
       - scored
@@ -173,7 +173,7 @@
       line: "install udf /bin/true"
       create: yes
   when:
-      - sles12cis_rule_1_1_1_7
+      - sles15cis_rule_1_1_1_7
   tags:
       - level1
       - scored
@@ -186,7 +186,7 @@
       name: udf
       state: absent
   when:
-      - sles12cis_rule_1_1_1_7
+      - sles15cis_rule_1_1_1_7
   tags:
       - level1
       - scored
@@ -201,7 +201,7 @@
       line: "install vfat /bin/true"
       create: yes
   when:
-      - sles12cis_rule_1_1_1_8
+      - sles15cis_rule_1_1_1_8
   tags:
       - level1
       - scored
@@ -214,7 +214,7 @@
       name: vfat
       state: absent
   when:
-      - sles12cis_rule_1_1_1_8
+      - sles15cis_rule_1_1_1_8
   tags:
       - level2
       - scored
@@ -226,7 +226,7 @@
   command: /bin/true
   changed_when: no
   when:
-      - sles12cis_rule_1_1_2
+      - sles15cis_rule_1_1_2
   tags:
       - level2
       - scored
@@ -242,9 +242,9 @@
   command: /bin/true
   changed_when: no
   when:
-      - sles12cis_rule_1_1_3
-      - sles12cis_rule_1_1_4
-      - sles12cis_rule_1_1_5
+      - sles15cis_rule_1_1_3
+      - sles15cis_rule_1_1_4
+      - sles15cis_rule_1_1_5
   tags:
       - level1
       - scored
@@ -263,7 +263,7 @@
   args:
     warn: false
   when:
-      - sles12cis_rule_1_1_6
+      - sles15cis_rule_1_1_6
   tags:
       - level2
       - scored
@@ -277,7 +277,7 @@
   changed_when: no
   failed_when: no
   when:
-      - sles12cis_rule_1_1_7
+      - sles15cis_rule_1_1_7
   tags:
       - level2
       - scored
@@ -290,15 +290,15 @@
          SCORED | 1.1.10 | PATCH | Ensure noexec option set on /var/tmp partition"
   mount:
       name: /var/tmp
-      src: "{{ sles12cis_vartmp['source'] }}"
+      src: "{{ sles15cis_vartmp['source'] }}"
       state: mounted
-      fstype: "{{ sles12cis_vartmp['fstype'] }}"
-      opts: "{{ sles12cis_vartmp['opts'] }}"
+      fstype: "{{ sles15cis_vartmp['fstype'] }}"
+      opts: "{{ sles15cis_vartmp['opts'] }}"
   when:
-      - sles12cis_vartmp['enabled'] == 'yes'
-      - sles12cis_rule_1_1_8
-      - sles12cis_rule_1_1_9
-      - sles12cis_rule_1_1_10
+      - sles15cis_vartmp['enabled'] == 'yes'
+      - sles15cis_rule_1_1_8
+      - sles15cis_rule_1_1_9
+      - sles15cis_rule_1_1_10
   tags:
       - level1
       - scored
@@ -315,7 +315,7 @@
   args:
     warn: false
   when:
-      - sles12cis_rule_1_1_11
+      - sles15cis_rule_1_1_11
   tags:
       - level2
       - scored
@@ -331,7 +331,7 @@
   args:
     warn: false
   when:
-      - sles12cis_rule_1_1_12
+      - sles15cis_rule_1_1_12
   tags:
       - level2
       - scored
@@ -347,7 +347,7 @@
   args:
     warn: false
   when:
-      - sles12cis_rule_1_1_13
+      - sles15cis_rule_1_1_13
   tags:
       - level2
       - scored
@@ -363,7 +363,7 @@
       fstype: "{{ item.fstype }}"
       opts: "nodev"
   when:
-      - sles12cis_rule_1_1_14
+      - sles15cis_rule_1_1_14
       - item.mount == "/home"
   with_items: "{{ ansible_mounts }}"
   no_log: true
@@ -383,9 +383,9 @@
       fstype: tmpfs
       opts: "defaults,nodev,nosuid,noexec"
   when:
-      - sles12cis_rule_1_1_15
-      - sles12cis_rule_1_1_16
-      - sles12cis_rule_1_1_17
+      - sles15cis_rule_1_1_15
+      - sles15cis_rule_1_1_16
+      - sles15cis_rule_1_1_17
   tags:
       - level1
       - scored
@@ -399,7 +399,7 @@
       msg: "--> Not relevant"
   changed_when: no
   when:
-      - sles12cis_rule_1_1_18
+      - sles15cis_rule_1_1_18
   tags:
       - level1
       - notscored
@@ -411,7 +411,7 @@
       msg: "--> Not relevant"
   changed_when: no
   when:
-      - sles12cis_rule_1_1_19
+      - sles15cis_rule_1_1_19
   tags:
       - level1
       - notscored
@@ -423,7 +423,7 @@
       msg: "--> Not relevant"
   changed_when: no
   when:
-      - sles12cis_rule_1_1_20
+      - sles15cis_rule_1_1_20
   tags:
       - level1
       - notscored
@@ -436,7 +436,7 @@
   failed_when: no
   #when: sticky_bit_on_worldwritable_dirs_audit.rc == '0'
   when:
-      - sles12cis_rule_1_1_21
+      - sles15cis_rule_1_1_21
   tags:
       - level1
       - level2
@@ -448,8 +448,8 @@
       name: autofs
       enabled: no
   when:
-      - sles12cis_allow_autofs == false and autofs_service_status.stdout in sles12cis_service_status
-      - sles12cis_rule_1_1_22
+      - sles15cis_allow_autofs == false and autofs_service_status.stdout in sles15cis_service_status
+      - sles15cis_rule_1_1_22
   tags:
       - level1
       - patch
@@ -463,7 +463,7 @@
   args:
     warn: false
   when:
-      - sles12cis_rule_1_2_1
+      - sles15cis_rule_1_2_1
   tags:
       - level1
       - notscored
@@ -478,7 +478,7 @@
   register: package_repos
   changed_when: no
   when:
-      - sles12cis_rule_1_2_2
+      - sles15cis_rule_1_2_2
   tags:
       - level1
       - scored
@@ -494,7 +494,7 @@
       - "{{ package_repos.files }}"
   no_log: True
   when:
-      - sles12cis_rule_1_2_2
+      - sles15cis_rule_1_2_2
   tags:
       - level1
       - scored
@@ -506,7 +506,7 @@
       name: aide
       state: present
   when:
-      - sles12cis_rule_1_3_1
+      - sles15cis_rule_1_3_1
   tags:
       - level1
       - scored
@@ -523,8 +523,8 @@
   async: 45
   poll: 0
   when:
-      - sles12cis_config_aide
-      - sles12cis_rule_1_3_1
+      - sles15cis_config_aide
+      - sles15cis_rule_1_3_1
   tags:
       - level1
       - scored
@@ -535,16 +535,16 @@
 - name: "SCORED | 1.3.2 | PATCH | Ensure filesystem integrity is regularly checked"
   cron:
       name: Run AIDE integrity check weekly
-      cron_file: "{{ sles12cis_aide_cron['cron_file'] }}"
-      user: "{{ sles12cis_aide_cron['cron_user'] }}"
-      minute: "{{ sles12cis_aide_cron['aide_minute'] | default('0') }}"
-      hour: "{{ sles12cis_aide_cron['aide_hour'] | default('5') }}"
-      day: "{{ sles12cis_aide_cron['aide_day'] | default('*') }}"
-      month: "{{ sles12cis_aide_cron['aide_month'] | default('*') }}"
-      weekday: "{{ sles12cis_aide_cron['aide_weekday'] | default('*') }}"
-      job: "{{ sles12cis_aide_cron['aide_job'] }}"
+      cron_file: "{{ sles15cis_aide_cron['cron_file'] }}"
+      user: "{{ sles15cis_aide_cron['cron_user'] }}"
+      minute: "{{ sles15cis_aide_cron['aide_minute'] | default('0') }}"
+      hour: "{{ sles15cis_aide_cron['aide_hour'] | default('5') }}"
+      day: "{{ sles15cis_aide_cron['aide_day'] | default('*') }}"
+      month: "{{ sles15cis_aide_cron['aide_month'] | default('*') }}"
+      weekday: "{{ sles15cis_aide_cron['aide_weekday'] | default('*') }}"
+      job: "{{ sles15cis_aide_cron['aide_job'] }}"
   when:
-      - sles12cis_rule_1_3_2
+      - sles15cis_rule_1_3_2
   tags:
       - level1
       - scored
@@ -558,7 +558,7 @@
       path: /boot/grub2/grub.cfg
   register: grub_cfg
   when:
-      - sles12cis_rule_1_4_1
+      - sles15cis_rule_1_4_1
   tags:
       - level1
       - scored
@@ -574,7 +574,7 @@
       mode: 0600
   when:
       - grub_cfg.stat.exists
-      - sles12cis_rule_1_4_1
+      - sles15cis_rule_1_4_1
   tags:
       - level1
       - scored
@@ -584,11 +584,11 @@
 
 - name: "SCORED | 1.4.2 | PATCH | Ensure bootloader password is set"
   grub_crypt:
-      password: "{{ sles12cis_bootloader_password }}"
+      password: "{{ sles15cis_bootloader_password }}"
   register: grub_pass
   when:
-      - sles12cis_set_boot_pass
-      - sles12cis_rule_1_4_2
+      - sles15cis_set_boot_pass
+      - sles15cis_rule_1_4_2
   tags:
       - level1
       - scored
@@ -602,8 +602,8 @@
       content: "GRUB2_PASSWORD={{ grub_pass.passhash }}"
   notify: generate new grub config
   when:
-      - sles12cis_set_boot_pass and grub_pass is defined and grub_pass.passhash is defined and grub_pass.passhash != ''
-      - sles12cis_rule_1_4_2
+      - sles15cis_set_boot_pass and grub_pass is defined and grub_pass.passhash is defined and grub_pass.passhash != ''
+      - sles15cis_rule_1_4_2
   tags:
       - level1
       - scored
@@ -619,7 +619,7 @@
       line: '*                hard    core            0'
       insertbefore: '^# End of file'
   when:
-      - sles12cis_rule_1_5_1
+      - sles15cis_rule_1_5_1
   tags:
       - level1
       - scored
@@ -636,7 +636,7 @@
       sysctl_set: yes
       ignoreerrors: yes
   when:
-      - sles12cis_rule_1_5_1
+      - sles15cis_rule_1_5_1
   tags:
       - level1
       - scored
@@ -649,7 +649,7 @@
   changed_when: no
   failed_when: no
   when:
-      - sles12cis_rule_1_5_2
+      - sles15cis_rule_1_5_2
   tags:
       - level1
       - level2
@@ -665,7 +665,7 @@
       sysctl_set: yes
       ignoreerrors: yes
   when:
-      - sles12cis_rule_1_5_3
+      - sles15cis_rule_1_5_3
   tags:
       - level1
       - scored
@@ -676,7 +676,7 @@
   command: prelink -ua
   when:
       - prelink_installed.rc == 0
-      - sles12cis_rule_1_5_4
+      - sles15cis_rule_1_5_4
   tags:
       - level1
       - scored
@@ -687,7 +687,7 @@
   command: /bin/true
   changed_when: no
   when:
-      - sles12cis_rule_1_6_1_1
+      - sles15cis_rule_1_6_1_1
   tags:
       - level2
       - scored
@@ -699,8 +699,8 @@
   command: /bin/true
   changed_when: no
   when:
-      - not sles12cis_selinux_disable
-      - sles12cis_rule_1_6_1_2
+      - not sles15cis_selinux_disable
+      - sles15cis_rule_1_6_1_2
   tags:
       - level2
       - scored
@@ -713,8 +713,8 @@
   command: /bin/true
   changed_when: no
   when:
-      - not sles12cis_selinux_disable
-      - sles12cis_rule_1_6_1_3
+      - not sles15cis_selinux_disable
+      - sles15cis_rule_1_6_1_3
   tags:
       - level2
       - scored
@@ -728,7 +728,7 @@
       name: setroubleshoot
       state: absent
   when:
-      - sles12cis_rule_1_6_1_4
+      - sles15cis_rule_1_6_1_4
   tags:
       - level2
       - scored
@@ -741,7 +741,7 @@
       name: mcstrans
       state: absent
   when:
-      - sles12cis_rule_1_6_1_5
+      - sles15cis_rule_1_6_1_5
   tags:
       - level2
       - scored
@@ -752,7 +752,7 @@
   command: /bin/true
   changed_when: no
   when:
-      - sles12cis_rule_1_6_1_6
+      - sles15cis_rule_1_6_1_6
   tags:
       - level2
       - scored
@@ -764,7 +764,7 @@
   command: /bin/true
   changed_when: no
   when:
-      - sles12cis_rule_1_6_2_1
+      - sles15cis_rule_1_6_2_1
   tags:
       - level2
       - scored
@@ -776,7 +776,7 @@
   command: /bin/true
   changed_when: no
   when:
-      - sles12cis_rule_1_6_2_2
+      - sles15cis_rule_1_6_2_2
   tags:
       - level2
       - scored
@@ -788,7 +788,7 @@
   command: /bin/true
   changed_when: no
   when:
-      - sles12cis_rule_1_6_2_3
+      - sles15cis_rule_1_6_2_3
   tags:
       - level2
       - scored
@@ -801,7 +801,7 @@
       src: etc/motd.j2
       dest: /etc/motd
   when:
-      - sles12cis_rule_1_7_1_1
+      - sles15cis_rule_1_7_1_1
   tags:
       - level1
       - banner
@@ -813,7 +813,7 @@
       src: etc/issue.j2
       dest: /etc/issue
   when:
-      - sles12cis_rule_1_7_1_2
+      - sles15cis_rule_1_7_1_2
   tags:
       - level1
       - patch
@@ -824,7 +824,7 @@
       src: etc/issue.net.j2
       dest: /etc/issue.net
   when:
-      - sles12cis_rule_1_7_1_3
+      - sles15cis_rule_1_7_1_3
   tags:
       - level1
       - banner
@@ -839,7 +839,7 @@
       group: root
       mode: 0644
   when:
-      - sles12cis_rule_1_7_1_4
+      - sles15cis_rule_1_7_1_4
   tags:
       - level1
       - perms
@@ -854,7 +854,7 @@
       group: root
       mode: 0644
   when:
-      - sles12cis_rule_1_7_1_5
+      - sles15cis_rule_1_7_1_5
   tags:
       - level1
       - perms
@@ -869,7 +869,7 @@
       group: root
       mode: 0644
   when:
-      - sles12cis_rule_1_7_1_6
+      - sles15cis_rule_1_7_1_6
   tags:
       - level1
       - perms
@@ -892,11 +892,11 @@
       - { file: '/etc/dconf/profile/gdm', regexp: 'file-db', line: 'file-db:/usr/share/gdm/greeter-dconf-defaults' }
       - { file: '/etc/dconf/db/gdm.d/01-banner-message', regexp: '\[org\/gnome\/login-screen\]', line: '[org/gnome/login-screen]' }
       - { file: '/etc/dconf/db/gdm.d/01-banner-message', regexp: 'banner-message-enable', line: 'banner-message-enable=true' }
-      - { file: '/etc/dconf/db/gdm.d/01-banner-message', regexp: 'banner-message-text', line: "banner-message-text='{{ sles12cis_warning_banner }}' " }
+      - { file: '/etc/dconf/db/gdm.d/01-banner-message', regexp: 'banner-message-text', line: "banner-message-text='{{ sles15cis_warning_banner }}' " }
   no_log: True
   when:
-      - sles12cis_gui
-      - sles12cis_rule_1_7_2
+      - sles15cis_gui
+      - sles15cis_rule_1_7_2
   tags:
       - level1
       - level2
@@ -908,7 +908,7 @@
       name: "*"
       state: latest
   when:
-      - sles12cis_rule_1_8
+      - sles15cis_rule_1_8
   tags:
       - level1
       - level2

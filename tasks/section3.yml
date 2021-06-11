@@ -8,8 +8,8 @@
   notify:
       - sysctl flush ipv4 route table
   when:
-      - sles12cis_is_router == false
-      - sles12cis_rule_3_1_1
+      - sles15cis_is_router == false
+      - sles15cis_rule_3_1_1
   tags:
       - level1
       - sysctl
@@ -30,8 +30,8 @@
   notify:
       - sysctl flush ipv4 route table
   when:
-      - sles12cis_is_router == false
-      - sles12cis_rule_3_1_2
+      - sles15cis_is_router == false
+      - sles15cis_rule_3_1_2
   tags:
       - level1
       - sysctl
@@ -52,7 +52,7 @@
   notify:
       - sysctl flush ipv4 route table
   when:
-      - sles12cis_rule_3_2_1
+      - sles15cis_rule_3_2_1
   tags:
       - level1
       - sysctl
@@ -73,7 +73,7 @@
   notify:
       - sysctl flush ipv4 route table
   when:
-      - sles12cis_rule_3_2_2
+      - sles15cis_rule_3_2_2
   tags:
       - level1
       - sysctl
@@ -94,7 +94,7 @@
   notify:
       - sysctl flush ipv4 route table
   when:
-      - sles12cis_rule_3_2_3
+      - sles15cis_rule_3_2_3
   tags:
       - level1
       - sysctl
@@ -115,7 +115,7 @@
   notify:
       - sysctl flush ipv4 route table
   when:
-      - sles12cis_rule_3_2_4
+      - sles15cis_rule_3_2_4
   tags:
       - level1
       - sysctl
@@ -132,7 +132,7 @@
   notify:
       - sysctl flush ipv4 route table
   when:
-      - sles12cis_rule_3_2_5
+      - sles15cis_rule_3_2_5
   tags:
       - level1
       - sysctl
@@ -149,7 +149,7 @@
   notify:
       - sysctl flush ipv4 route table
   when:
-      - sles12cis_rule_3_2_6
+      - sles15cis_rule_3_2_6
   tags:
       - level1
       - sysctl
@@ -170,7 +170,7 @@
   notify:
       - sysctl flush ipv4 route table
   when:
-      - sles12cis_rule_3_2_7
+      - sles15cis_rule_3_2_7
   tags:
       - level1
       - sysctl
@@ -187,7 +187,7 @@
   notify:
       - sysctl flush ipv4 route table
   when:
-      - sles12cis_rule_3_2_8
+      - sles15cis_rule_3_2_8
   tags:
       - level1
       - sysctl
@@ -208,8 +208,8 @@
   notify:
       - sysctl flush ipv6 route table
   when:
-      - sles12cis_ipv6_required == true
-      - sles12cis_rule_3_3_1
+      - sles15cis_ipv6_required == true
+      - sles15cis_rule_3_3_1
   tags:
       - level1
       - sysctl
@@ -230,8 +230,8 @@
   notify:
       - sysctl flush ipv6 route table
   when:
-      - sles12cis_ipv6_required == true
-      - sles12cis_rule_3_3_2
+      - sles15cis_ipv6_required == true
+      - sles15cis_rule_3_3_2
   tags:
       - level1
       - sysctl
@@ -245,8 +245,8 @@
       line: "options ipv6 disable=1"
       create: yes
   when:
-      - sles12cis_ipv6_required == false
-      - sles12cis_rule_3_3_3
+      - sles15cis_ipv6_required == false
+      - sles15cis_rule_3_3_3
   tags:
       - level1
       - patch
@@ -254,10 +254,10 @@
 
 - name: "SCORED | 3.4.1 | PATCH | Ensure TCP Wrappers is installed"
   package:
-      name: "{{ sles12cis_tcpwrapper }}"
+      name: "{{ sles15cis_tcpwrapper }}"
       state: present
   when:
-      - sles12cis_rule_3_4_1
+      - sles15cis_rule_3_4_1
   tags:
       - level1
       - patch
@@ -271,7 +271,7 @@
       group: root
       mode: 0644
   when:
-      - sles12cis_rule_3_4_2
+      - sles15cis_rule_3_4_2
   tags:
       - level1
       - patch
@@ -283,7 +283,7 @@
       regexp: "^(#)?ALL"
       line: "ALL: ALL"
   when:
-      - sles12cis_rule_3_4_3
+      - sles15cis_rule_3_4_3
   tags:
       - level1
       - patch
@@ -296,7 +296,7 @@
       group: root
       mode: 0644
   when:
-      - sles12cis_rule_3_4_4
+      - sles15cis_rule_3_4_4
   tags:
       - level1
       - patch
@@ -309,7 +309,7 @@
       group: root
       mode: 0644
   when:
-      - sles12cis_rule_3_4_5
+      - sles15cis_rule_3_4_5
   tags:
       - level1
       - patch
@@ -322,7 +322,7 @@
       line: "install dccp /bin/true"
       create: yes
   when:
-      - sles12cis_rule_3_5_1
+      - sles15cis_rule_3_5_1
   tags:
       - level1
       - patch
@@ -335,7 +335,7 @@
       line: "install sctp /bin/true"
       create: yes
   when:
-      - sles12cis_rule_3_5_2
+      - sles15cis_rule_3_5_2
   tags:
       - level1
       - patch
@@ -348,7 +348,7 @@
       line: "install rds /bin/true"
       create: yes
   when:
-      - sles12cis_rule_3_5_3
+      - sles15cis_rule_3_5_3
   tags:
       - level1
       - patch
@@ -361,7 +361,7 @@
       line: "install tipc /bin/true"
       create: yes
   when:
-      - sles12cis_rule_3_5_4
+      - sles15cis_rule_3_5_4
   tags:
       - level1
       - patch
@@ -372,8 +372,8 @@
       name: firewalld
       state: present
   when:
-      - sles12cis_firewall == "firewalld"
-      - sles12cis_rule_3_6 
+      - sles15cis_firewall == "firewalld"
+      - sles15cis_rule_3_6 
 
   tags:
       - level1
@@ -386,8 +386,8 @@
       state: started
       enabled: yes
   when:
-      - sles12cis_firewall == "firewalld"
-      - sles12cis_rule_3_6_1
+      - sles15cis_firewall == "firewalld"
+      - sles15cis_rule_3_6_1
   tags:
       - level1
       - patch
@@ -397,8 +397,8 @@
   command: /bin/true
   changed_when: no
   when:
-      - sles12cis_firewall == "iptables"
-      - sles12cis_rule_3_6_1
+      - sles15cis_firewall == "iptables"
+      - sles15cis_rule_3_6_1
   tags:
       - level1
       - patch
@@ -411,8 +411,8 @@
       regexp: "^DefaultZone"
       line: "DefaultZone=drop"
   when:
-      - sles12cis_firewall == "firewalld"
-      - sles12cis_rule_3_6_2
+      - sles15cis_firewall == "firewalld"
+      - sles15cis_rule_3_6_2
   tags:
       - level1
       - patch
@@ -424,8 +424,8 @@
       zone: drop
       permanent: true
   when:
-      - sles12cis_firewall == "firewalld"
-      - sles12cis_rule_3_6_2
+      - sles15cis_firewall == "firewalld"
+      - sles15cis_rule_3_6_2
   tags:
       - level1
       - patch
@@ -435,8 +435,8 @@
   command: /bin/true
   changed_when: no
   when:
-      - sles12cis_firewall == "iptables"
-      - sles12cis_rule_3_6_2
+      - sles15cis_firewall == "iptables"
+      - sles15cis_rule_3_6_2
   tags:
       - level1
       - patch
@@ -447,8 +447,8 @@
   command: /bin/true
   changed_when: no
   when:
-      - sles12cis_firewall == "iptables"
-      - sles12cis_rule_3_6_3
+      - sles15cis_firewall == "iptables"
+      - sles15cis_rule_3_6_3
   tags:
       - level1
       - patch
@@ -459,8 +459,8 @@
   command: /bin/true
   changed_when: no
   when:
-      - sles12cis_firewall == "iptables"
-      - sles12cis_rule_3_6_4
+      - sles15cis_firewall == "iptables"
+      - sles15cis_rule_3_6_4
   tags:
       - level1
       - patch
@@ -475,10 +475,10 @@
       permanent: true
       immediate: true
   notify: restart firewalld
-  with_items: "{{ sles12cis_firewall_services }}"
+  with_items: "{{ sles15cis_firewall_services }}"
   when:
-      - sles12cis_firewall == "firewalld"
-      - sles12cis_rule_3_6_5
+      - sles15cis_firewall == "firewalld"
+      - sles15cis_rule_3_6_5
   tags:
       - level1
       - patch
@@ -488,8 +488,8 @@
   command: /bin/true
   changed_when: no
   when:
-      - sles12cis_firewall == "iptables"
-      - sles12cis_rule_3_6_5
+      - sles15cis_firewall == "iptables"
+      - sles15cis_rule_3_6_5
   tags:
       - level1
       - patch

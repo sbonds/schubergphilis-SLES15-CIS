@@ -1,5 +1,5 @@
 ---
-# handlers file for sles12cis_-CIS
+# handlers file for sles15cis_-CIS
 
 - name: sysctl flush ipv4 route table
   become: yes
@@ -51,6 +51,6 @@
   args:
     warn: false
   when:
-    - sles12cis_skip_for_travis == false
+    - sles15cis_skip_for_travis == false
   tags:
     - skip_ansible_lint

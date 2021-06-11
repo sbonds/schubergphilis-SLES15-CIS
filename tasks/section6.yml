@@ -2,7 +2,7 @@
   command: /bin/true
   changed_when: no
   when:
-      - sles12cis_rule_6_1_1
+      - sles15cis_rule_6_1_1
   tags:
       - level2
       - patch
@@ -16,7 +16,7 @@
       group: root
       mode: 0644
   when:
-      - sles12cis_rule_6_1_2
+      - sles15cis_rule_6_1_2
   tags:
       - level1
       - level2
@@ -30,7 +30,7 @@
       group: root
       mode: 0000
   when:
-      - sles12cis_rule_6_1_3
+      - sles15cis_rule_6_1_3
   tags:
       - level1
       - level2
@@ -44,7 +44,7 @@
       group: root
       mode: 0644
   when:
-      - sles12cis_rule_6_1_4
+      - sles15cis_rule_6_1_4
   tags:
       - level1
       - level2
@@ -58,7 +58,7 @@
       group: root
       mode: 0600
   when:
-      - sles12cis_rule_6_1_5
+      - sles15cis_rule_6_1_5
   tags:
       - level1
       - level2
@@ -72,7 +72,7 @@
       group: root
       mode: 0600
   when:
-      - sles12cis_rule_6_1_6
+      - sles15cis_rule_6_1_6
   tags:
       - level1
       - level2
@@ -86,7 +86,7 @@
       group: root
       mode: 0600
   when:
-      - sles12cis_rule_6_1_7
+      - sles15cis_rule_6_1_7
   tags:
       - level1
       - level2
@@ -97,7 +97,7 @@
   command: /bin/true
   changed_when: no
   when:
-      - sles12cis_rule_6_1_8
+      - sles15cis_rule_6_1_8
   tags:
       - level1
       - level2
@@ -109,7 +109,7 @@
   command: /bin/true
   changed_when: no
   when:
-      - sles12cis_rule_6_1_9
+      - sles15cis_rule_6_1_9
   tags:
       - level1
       - level2
@@ -121,7 +121,7 @@
   command: /bin/true
   changed_when: no
   when:
-      - sles12cis_rule_6_1_10
+      - sles15cis_rule_6_1_10
   tags:
       - level1
       - level2
@@ -133,7 +133,7 @@
   command: /bin/true
   changed_when: no
   when:
-      - sles12cis_rule_6_1_11
+      - sles15cis_rule_6_1_11
   tags:
       - level1
       - level2
@@ -145,7 +145,7 @@
   command: /bin/true
   changed_when: no
   when:
-      - sles12cis_rule_6_1_12
+      - sles15cis_rule_6_1_12
   tags:
       - level1
       - level2
@@ -160,7 +160,7 @@
   with_items: "{{ empty_password_accounts.stdout_lines }}"
   when:
       - empty_password_accounts.rc
-      - sles12cis_rule_6_2_1
+      - sles15cis_rule_6_2_1
   tags:
       - level1
       - level2
@@ -174,7 +174,7 @@
   args:
     warn: false
   when:
-      - sles12cis_rule_6_2_2
+      - sles15cis_rule_6_2_2
   tags:
       - level1
       - level2
@@ -188,7 +188,7 @@
   args:
     warn: false
   when:
-      - sles12cis_rule_6_2_3
+      - sles15cis_rule_6_2_3
   tags:
       - level1
       - level2
@@ -200,7 +200,7 @@
   changed_when: no
   failed_when: no
   when:
-      - sles12cis_rule_6_2_4
+      - sles15cis_rule_6_2_4
   tags:
       - level1
       - level2
@@ -214,7 +214,7 @@
   with_items: "{{ uid_zero_accounts_except_root.stdout_lines }}"
   when:
       - uid_zero_accounts_except_root.rc
-      - sles12cis_rule_6_2_5
+      - sles15cis_rule_6_2_5
   tags:
       - level1
       - level2
@@ -225,7 +225,7 @@
   command: /bin/true
   changed_when: no
   when:
-      - sles12cis_rule_6_2_6
+      - sles15cis_rule_6_2_6
   tags:
       - level1
       - level2
@@ -237,7 +237,7 @@
   command: /bin/true
   changed_when: no
   when:
-      - sles12cis_rule_6_2_7
+      - sles15cis_rule_6_2_7
   tags:
       - level1
       - level2
@@ -249,7 +249,7 @@
   command: /bin/true
   changed_when: no
   when:
-      - sles12cis_rule_6_2_8
+      - sles15cis_rule_6_2_8
   tags:
       - level1
       - level2
@@ -261,7 +261,7 @@
   command: /bin/true
   changed_when: no
   when:
-      - sles12cis_rule_6_2_9
+      - sles15cis_rule_6_2_9
   tags:
       - level1
       - level2
@@ -273,7 +273,7 @@
   command: /bin/true
   changed_when: no
   when:
-      - sles12cis_rule_6_2_10
+      - sles15cis_rule_6_2_10
   tags:
       - level1
       - level2
@@ -287,7 +287,7 @@
       dest: "~{{ item }}/.forward"
   with_items: "{{ users.stdout_lines }}"
   when:
-      - sles12cis_rule_6_2_11
+      - sles15cis_rule_6_2_11
   tags:
       - level1
       - level2
@@ -300,7 +300,7 @@
       dest: "~{{ item }}/.netrc"
   with_items: "{{ users.stdout_lines }}"
   when:
-      - sles12cis_rule_6_2_12
+      - sles15cis_rule_6_2_12
   tags:
       - level1
       - level2
@@ -324,7 +324,7 @@
       dest: "~{{ item }}/.rhosts"
   with_items: "{{ users.stdout_lines }}"
   when:
-      - sles12cis_rule_6_2_14
+      - sles15cis_rule_6_2_14
   tags:
       - level1
       - level2
@@ -335,7 +335,7 @@
   command: /bin/true
   changed_when: no
   when:
-      - sles12cis_rule_6_2_15
+      - sles15cis_rule_6_2_15
   tags:
       - level1
       - level2
@@ -347,7 +347,7 @@
   command: /bin/true
   changed_when: no
   when:
-      - sles12cis_rule_6_2_16
+      - sles15cis_rule_6_2_16
   tags:
       - level1
       - level2
@@ -359,7 +359,7 @@
   command: /bin/true
   changed_when: no
   when:
-      - sles12cis_rule_6_2_17
+      - sles15cis_rule_6_2_17
   tags:
       - level1
       - level2
@@ -371,7 +371,7 @@
   command: /bin/true
   changed_when: no
   when:
-      - sles12cis_rule_6_2_18
+      - sles15cis_rule_6_2_18
   tags:
       - level1
       - level2
@@ -383,7 +383,7 @@
   command: /bin/true
   changed_when: no
   when:
-      - sles12cis_rule_6_2_19
+      - sles15cis_rule_6_2_19
   tags:
       - level1
       - level2
