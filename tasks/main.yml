@@ -47,8 +47,3 @@
   become: yes
   when: sles15cis_section6
 
-- include: post.yml
-  become: yes
-  tags:
-      - post_tasks
-      - always
