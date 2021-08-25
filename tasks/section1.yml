@@ -518,7 +518,7 @@
   lineinfile:
       dest: /etc/sudoers
       regexp: "^(Defaults .*(?!.*use_pty))( .*)"
-      line: "\1 use_pty\2"
+      line: '\1 use_pty\2'
       create: yes
       backrefs: yes
   when:
@@ -602,8 +602,9 @@
       group: root
       mode: 0600
   when:
-      - grub_cfg.stat.exists
       - sles15cis_rule_1_5_1
+      - grub_cfg.stat.exists
+
   tags:
       - level1
       - scored
