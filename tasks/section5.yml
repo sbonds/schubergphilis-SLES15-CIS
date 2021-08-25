@@ -547,8 +547,12 @@
 
 
 - name: "SCORED | 5.4.4 | PATCH | Ensure default user umask is 027 or more restrictive"
-  command: /bin/true
-  changed_when: no
+  lineinfile:
+      state: present
+      dest: /etc/login.defs
+      regexp: "^UMASK\s+\d+"
+      line: "UMASK           027"
+
   when:
       - sles15cis_rule_5_4_4
   tags:
@@ -556,7 +560,6 @@
       - level2
       - patch
       - rule_5.4.4
-      - notimplemented
 
 - name: "NOTSCORED | 5.5 | PATCH | Ensure root login is restricted to system console"
   command: /bin/true
