@@ -561,6 +561,20 @@
       - patch
       - rule_5.4.4
 
+- name: "SCORED | 5.5.5 | PATCH | Ensure default user shell timeout is 1800 seconds or less"
+  copy:
+      dest: /etc/profile.d/autologout.sh
+      content: |
+         # Disconnect shell sessions idle for 1800 seconds or more
+         readonly TMOUT=1800 ; export TMOUT
+  when:
+      - sles15cis_rule_5_4_5
+  tags:
+      - level1
+      - level2
+      - patch
+      - rule_5.4.5
+
 - name: "NOTSCORED | 5.5 | PATCH | Ensure root login is restricted to system console"
   command: /bin/true
   changed_when: no
