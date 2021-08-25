@@ -550,7 +550,7 @@
   lineinfile:
       state: present
       dest: /etc/login.defs
-      regexp: "^UMASK\s+\d+"
+      regexp: '^UMASK\s+\d+'
       line: "UMASK           027"
 
   when:
