@@ -501,20 +501,20 @@
       - patch
       - rule_1.2.2
 
-- name: "SCORED | 1.3.1 | PATCH | Ensure AIDE is installed"
+- name: "SCORED | 1.4.1 | PATCH | Ensure AIDE is installed"
   package:
       name: aide
       state: present
   when:
-      - sles15cis_rule_1_3_1
+      - sles15cis_rule_1_4_1
   tags:
       - level1
       - scored
       - aide
       - patch
-      - rule_1.3.1
+      - rule_1.4.1
 
-- name: "SCORED | 1.3.1 | PATCH | Ensure AIDE is installed"
+- name: "SCORED | 1.4.1 | PATCH | Ensure AIDE is installed"
   command: /usr/sbin/aide --init -B 'database_out=file:/var/lib/aide/aide.db.gz'
   args:
       creates: /var/lib/aide/aide.db.gz
@@ -524,15 +524,15 @@
   poll: 0
   when:
       - sles15cis_config_aide
-      - sles15cis_rule_1_3_1
+      - sles15cis_rule_1_4_1
   tags:
       - level1
       - scored
       - aide
       - patch
-      - rule_1.3.1
+      - rule_1.4.1
 
-- name: "SCORED | 1.3.2 | PATCH | Ensure filesystem integrity is regularly checked"
+- name: "SCORED | 1.4.2 | PATCH | Ensure filesystem integrity is regularly checked"
   cron:
       name: Run AIDE integrity check weekly
       cron_file: "{{ sles15cis_aide_cron['cron_file'] }}"
@@ -544,29 +544,29 @@
       weekday: "{{ sles15cis_aide_cron['aide_weekday'] | default('*') }}"
       job: "{{ sles15cis_aide_cron['aide_job'] }}"
   when:
-      - sles15cis_rule_1_3_2
+      - sles15cis_rule_1_4_2
   tags:
       - level1
       - scored
       - aide
       - file_integrity
       - patch
-      - rule_1.3.2
+      - rule_1.4.2
 
-- name: "SCORED | 1.4.1 | PATCH | Ensure permissions on bootloader config are configured"
+- name: "SCORED | 1.5.1 | PATCH | Ensure permissions on bootloader config are configured"
   stat:
       path: /boot/grub2/grub.cfg
   register: grub_cfg
   when:
-      - sles15cis_rule_1_4_1
+      - sles15cis_rule_1_5_1
   tags:
       - level1
       - scored
       - grub
       - patch
-      - rule_1.4.1
+      - rule_1.5.1
 
-- name: "SCORED | 1.4.1 | PATCH | Ensure permissions on bootloader config are configured"
+- name: "SCORED | 1.5.1 | PATCH | Ensure permissions on bootloader config are configured"
   file:
       path: "{{ grub_cfg.stat.lnk_source if grub_cfg.stat.islnk else grub_cfg.stat.path}}"
       owner: root
@@ -574,44 +574,44 @@
       mode: 0600
   when:
       - grub_cfg.stat.exists
-      - sles15cis_rule_1_4_1
+      - sles15cis_rule_1_5_1
   tags:
       - level1
       - scored
       - grub
       - patch
-      - rule_1.4.1
+      - rule_1.5.1
 
-- name: "SCORED | 1.4.2 | PATCH | Ensure bootloader password is set"
+- name: "SCORED | 1.5.1 | PATCH | Ensure bootloader password is set"
   grub_crypt:
       password: "{{ sles15cis_bootloader_password }}"
   register: grub_pass
   when:
       - sles15cis_set_boot_pass
-      - sles15cis_rule_1_4_2
+      - sles15cis_rule_1_5_1
   tags:
       - level1
       - scored
       - grub
       - patch
-      - rule_1.4.2
+      - rule_1.5.1
 
-- name: "SCORED | 1.4.2 | PATCH | Ensure bootloader password is set"
+- name: "SCORED | 1.5.1 | PATCH | Ensure bootloader password is set"
   copy:
       dest: /boot/grub2/user.cfg
       content: "GRUB2_PASSWORD={{ grub_pass.passhash }}"
   notify: generate new grub config
   when:
       - sles15cis_set_boot_pass and grub_pass is defined and grub_pass.passhash is defined and grub_pass.passhash != ''
-      - sles15cis_rule_1_4_2
+      - sles15cis_rule_1_5_1
   tags:
       - level1
       - scored
       - grub
       - patch
-      - rule_1.4.2
+      - rule_1.5.1
 
-- name: "SCORED | 1.5.1 | PATCH | Ensure core dumps are restricted"
+- name: "SCORED | 1.6.1 | PATCH | Ensure core dumps are restricted"
   lineinfile:
       state: present
       dest: /etc/security/limits.conf
@@ -619,15 +619,15 @@
       line: '*                hard    core            0'
       insertbefore: '^# End of file'
   when:
-      - sles15cis_rule_1_5_1
+      - sles15cis_rule_1_6_1
   tags:
       - level1
       - scored
       - limits
       - patch
-      - rule_1.5.1
+      - rule_1.6.1
 
-- name: "SCORED | 1.5.1 | PATCH | Ensure core dumps are restricted"
+- name: "SCORED | 1.6.1 | PATCH | Ensure core dumps are restricted"
   sysctl:
       name: fs.suid_dumpable
       value: "0"
@@ -636,27 +636,27 @@
       sysctl_set: yes
       ignoreerrors: yes
   when:
-      - sles15cis_rule_1_5_1
+      - sles15cis_rule_1_6_1
   tags:
       - level1
       - scored
       - sysctl
       - patch
-      - rule_1.5.1
+      - rule_1.6.1
 
-- name: "NOTSCORED | 1.5.2 | PATCH | Ensure XD/NX support is enabled"
+- name: "NOTSCORED | 1.6.2 | PATCH | Ensure XD/NX support is enabled"
   shell: dmesg|grep -E "NX|XD" | grep " active"
   changed_when: no
   failed_when: no
   when:
-      - sles15cis_rule_1_5_2
+      - sles15cis_rule_1_6_2
   tags:
       - level1
       - level2
       - patch
-      - rule_1.5.2
+      - rule_1.6.2
 
-- name: "SCORED | 1.5.3 | PATCH | Ensure address space layout randomization (ASLR) is enabled"
+- name: "SCORED | 1.6.3 | PATCH | Ensure address space layout randomization (ASLR) is enabled"
   sysctl:
       name: kernel.randomize_va_space
       value: "2"
@@ -665,23 +665,23 @@
       sysctl_set: yes
       ignoreerrors: yes
   when:
-      - sles15cis_rule_1_5_3
+      - sles15cis_rule_1_6_3
   tags:
       - level1
       - scored
       - patch
-      - rule_1.5.3
+      - rule_1.6.3
 
-- name: "SCORED | 1.5.4 | PATCH | Ensure prelink is disabled"
+- name: "SCORED | 1.6.4 | PATCH | Ensure prelink is disabled"
   command: prelink -ua
   when:
       - prelink_installed.rc == 0
-      - sles15cis_rule_1_5_4
+      - sles15cis_rule_1_6_4
   tags:
       - level1
       - scored
       - patch
-      - rule_1.5.4
+      - rule_1.6.4
 
 - name: "SCORED | 1.6.1.1 | PATCH | Ensure SELinux is not disabled in bootloader configuration"
   command: /bin/true
